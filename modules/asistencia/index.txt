@@ -1,0 +1,253 @@
+Prompt detallado para continuación del Sistema Escolar EST #82
+Estamos desarrollando un sistema escolar completo para la ESCUELA SECUNDARIA TÉCNICA #82 utilizando PHP, HTML, MySQL con las siguientes características:
+Estructura de carpetas y archivos implementados
+SistemaEscolar/
+├── assets/
+│   ├── css/
+│   │   └── style.css (Estilos personalizados implementados con Bootstrap 5)
+│   ├── js/
+│   ├── images/
+│   │   ├── logo.png (Pendiente)
+│   │   └── user-placeholder.png (Pendiente)
+│   ├── fonts/
+│   └── vendor/
+├── config/
+│   ├── constants.php (Configurado)
+│   └── database.php (Configurado con conexión MySQL MyISAM)
+├── includes/
+│   ├── functions.php (Implementado con funciones utilitarias)
+│   ├── session_config.php (Configurado)
+│   ├── session_checker.php (Implementado para verificación de sesiones)
+│   ├── header.php (Implementado con menú completo responsive)
+│   └── footer.php (Implementado)
+├── lib/
+│   └── PHPMailer-master/ (Estructura para PHPMailer)
+├── modules/
+│   ├── login/
+│   │   ├── index.php (Implementado)
+│   │   ├── procesar.php (Implementado)
+│   │   └── logout.php (Implementado)
+│   ├── panel_inicio/
+│   │   └── index.php (Implementado con dashboard)
+│   ├── alumnos/ (MÓDULO COMPLETAMENTE IMPLEMENTADO)
+│   │   ├── index.php (Listado con filtros y paginación)
+│   │   ├── crear.php (Formulario completo)
+│   │   ├── guardar.php (Procesamiento)
+│   │   ├── ver.php (Vista detallada)
+│   │   ├── editar.php (Formulario de edición)
+│   │   ├── actualizar.php (Procesamiento)
+│   │   ├── eliminar.php (Eliminación lógica)
+│   │   ├── get_grupos.php (AJAX para obtener grupos por turno y grado)
+│   │   └── eliminar_contacto.php (Eliminar contactos de emergencia)
+│   ├── grupos/ (PENDIENTE)
+│   ├── registro_masivo/ (PENDIENTE)
+│   ├── credenciales/ (PENDIENTE)
+│   ├── asistencia/ (PENDIENTE)
+│   ├── comunicados/ (PENDIENTE)
+│   ├── historial_escolar/ (PENDIENTE)
+│   └── seguimiento_emocional/ (PENDIENTE)
+├── tcpdf/ (Estructura para TCPDF)
+├── uploads/
+│   ├── fotos/ (Para fotos de alumnos)
+│   ├── credenciales/ (Para credenciales generadas)
+│   └── comunicados/ (Para archivos de comunicados)
+├── logs/
+│   ├── acceso/ (Para logs de acceso)
+│   └── errores/ (Para logs de errores)
+└── index.php (Redirige a login)
+
+Base de datos
+
+Motor: MyISAM
+Charset: latin1
+Collation: latin1_swedish_ci
+Sin claves foráneas, con índices
+
+Tablas principales implementadas:
+
+usuarios (superadmin, organizador, consulta)
+alumnos
+contactos_emergencia
+grupos
+grados
+turnos
+asistencia
+historial_escolar
+seguimiento_emocional
+logs_sistema
+configuracion
+
+Funcionalidades implementadas
+
+Sistema de login completo:
+
+Validación de credenciales
+Control de sesiones
+Cierre de sesión
+Bloqueo por intentos fallidos
+
+
+Panel de inicio (dashboard):
+
+Estadísticas básicas
+Gráficos con Chart.js
+Accesos rápidos
+
+
+Gestión de alumnos (COMPLETO):
+
+Listado con filtros y paginación
+Alta de alumnos con datos personales, escolares, médicos
+Gestión de contactos de emergencia
+Subida de fotografías
+Visualización detallada
+Edición de datos
+Eliminación lógica
+
+
+
+Próximo módulo a implementar
+El siguiente módulo a implementar debería ser el de Grupos, ya que es fundamental para la gestión de alumnos y es prerrequisito para otros módulos como credenciales y asistencia.
+El módulo de Grupos debería incluir:
+
+Listado de grupos existentes
+Creación de nuevos grupos con asignación de grado y turno
+Edición de datos de grupos
+Visualización de alumnos por grupo
+Eliminación lógica de grupos
+
+Después, sería ideal implementar el módulo de Asistencia o Credenciales.
+Detalles técnicos importantes
+
+El sistema utiliza Bootstrap 5 para el frontend
+Se implementó validación tanto en cliente (JavaScript) como en servidor (PHP)
+Se utiliza Chart.js para gráficos
+Todas las operaciones de BD se realizan con MySQLi con prepared statements
+Manejo de sesiones con tokens CSRF
+Sistema de mensajes flash para retroalimentación al usuario
+Permisos por roles (superadmin, organizador, consulta)
+Sistema de registro de actividades (logs)
+
+Flujo de usuario
+El usuario accede al sistema mediante el login, es dirigido al panel de inicio según su rol, y desde allí puede navegar a los diferentes módulos a través del menú principal. El sistema es completamente responsive para dispositivos móviles y tablets.
+El próximo paso es continuar con el módulo de Grupos y luego Asistencia, que son fundamentales para el funcionamiento completo del sistema.
+Módulos pendientes por implementar para el Sistema Escolar EST #82
+A continuación, detallo todos los módulos que faltan por implementar en el sistema escolar, con sus características y funcionalidades esperadas:
+1. Módulo de Grupos (modules/grupos/)
+
+index.php: Listado de grupos con filtros (por grado, turno)
+crear.php: Formulario para crear un nuevo grupo
+guardar.php: Procesamiento de creación de grupo
+editar.php: Formulario para editar un grupo
+actualizar.php: Procesamiento de actualización
+ver.php: Vista detallada con lista de alumnos del grupo
+eliminar.php: Eliminación lógica de grupo
+
+2. Módulo de Registro Masivo (modules/registro_masivo/)
+
+index.php: Formulario para subir archivo CSV/Excel
+procesar.php: Procesamiento del archivo y registro en lote
+template.php: Generación de plantilla para descargar
+preview.php: Vista previa antes de importar
+
+3. Módulo de Credenciales (modules/credenciales/)
+
+index.php: Selección de grupos para generar credenciales
+generar.php: Generación de credencial individual
+generar_grupo.php: Generación para todo un grupo
+pdf.php: Creación del PDF con TCPDF
+plantilla.php: Personalización de plantilla de credencial
+
+4. Módulo de Asistencia (modules/asistencia/)
+
+index.php: Pase de lista por grupo y fecha
+registrar.php: Registro de asistencia individual
+guardar.php: Procesamiento de asistencia
+reporte.php: Reporte general de asistencia
+reporte_alumno.php: Reporte por alumno
+justificar.php: Registro de justificación de inasistencia
+
+5. Módulo de Comunicados (modules/comunicados/)
+
+index.php: Listado de comunicados enviados
+crear.php: Formulario para crear comunicado
+guardar.php: Procesamiento y envío
+ver.php: Vista detallada de un comunicado
+enviar.php: Reenvío de comunicado
+eliminar.php: Eliminación de comunicado
+
+6. Módulo de Historial Escolar (modules/historial_escolar/)
+
+index.php: Búsqueda de alumnos para ver historial
+ver.php: Visualización del historial completo de un alumno
+registrar.php: Registro de nueva entrada de historial
+guardar.php: Procesamiento de entrada
+reporte.php: Generación de reporte en PDF
+eliminar.php: Eliminación de entrada
+
+7. Módulo de Seguimiento Emocional (modules/seguimiento_emocional/)
+
+index.php: Listado de casos abiertos
+crear.php: Registro de nuevo caso
+guardar.php: Procesamiento del caso
+ver.php: Vista detallada de un caso
+bitacora.php: Registro de seguimiento
+guardar_bitacora.php: Procesamiento de bitácora
+cerrar.php: Cerrar caso de seguimiento
+
+8. Módulo de Administración (modules/admin/)
+
+usuarios.php: Gestión de usuarios del sistema
+crear_usuario.php: Formulario para crear usuario
+guardar_usuario.php: Procesamiento de creación
+editar_usuario.php: Edición de usuario
+actualizar_usuario.php: Procesamiento de actualización
+eliminar_usuario.php: Eliminación de usuario
+configuracion.php: Ajustes generales del sistema
+guardar_config.php: Guardar configuración
+logs.php: Visualización de registros del sistema
+perfil.php: Gestión de perfil del usuario actual
+actualizar_perfil.php: Actualización de perfil
+
+9. Funcionalidades adicionales pendientes
+
+Sistema de respaldo y restauración:
+
+backup.php: Generación de respaldo de la base de datos
+restore.php: Restauración de respaldo
+
+
+Reportes estadísticos:
+
+estadisticas.php: Panel de métricas y estadísticas
+reporte_general.php: Generación de reportes generales en PDF/Excel
+
+
+Gestión de ciclos escolares:
+
+ciclos.php: Administración de ciclos escolares
+nuevo_ciclo.php: Proceso de transición a nuevo ciclo
+
+
+API para aplicación móvil (opcional):
+
+api/auth.php: Autenticación
+api/alumnos.php: Datos de alumnos
+api/asistencia.php: Registro de asistencia
+api/comunicados.php: Comunicados
+
+
+
+Prioridad sugerida de implementación
+
+Módulo de Grupos (prioritario - prerrequisito para otros)
+Módulo de Asistencia (funcionalidad esencial diaria)
+Módulo de Credenciales (funcionalidad visible)
+Módulo de Comunicados (mejora comunicación)
+Módulo de Historial Escolar
+Módulo de Administración (usuarios y configuración)
+Módulo de Registro Masivo
+Módulo de Seguimiento Emocional
+Funcionalidades adicionales
+
+Cada módulo debe seguir los estándares de diseño y seguridad ya implementados, utilizando validaciones en cliente y servidor, y manteniendo la consistencia en la interfaz de usuario basada en Bootstrap 5.
